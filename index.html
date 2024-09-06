@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://getbootstrap.com/docs/4.1/examples/album/album.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <title>France Rekognition Demo</title>
+  </head>
+  <body>
+
+    <body>
+
+      <header>
+        <div class="collapse bg-dark" id="navbarHeader">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-8 col-md-7 py-4">
+                <h4 class="text-white">About</h4>
+                <p class="text-muted">This is a short demo of some feature of Amazon Rekognition. The celebrities database is a private database of more than 650 pictures. Amazon Rekognition recognize faces compare it to the private celebrities database and indicates some label about the face in the provided picture.</p>
+              </div>
+              <div class="col-sm-4 offset-md-1 py-4">
+                <h4 class="text-white">Contact</h4>
+                <ul class="list-unstyled">
+                  <li><a href="https://twitter.com/aws_actus?lang=fr" class="text-white">Follow us on Twitter</a></li>
+                  <li><a href="https://www.facebook.com/Amazon.fr/" class="text-white">Like us on Facebook</a></li>
+                  <li><a href="https://aws.amazon.com/fr/contact-us/" class="text-white">Email us</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="navbar navbar-dark bg-dark box-shadow">
+          <div class="container d-flex justify-content-between">
+            <a href="https://aws.amazon.com/fr/rekognition/" class="navbar-brand d-flex align-items-center">
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg> -->
+              <strong>Amazon Rekognition</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <main role="main">
+
+        <section class="jumbotron text-center">
+          <div class="container">
+            <h1 class="jumbotron-heading"><i class="fas fa-cloud"></i>   Amazon Rekognition Demo   <i class="fas fa-cloud"></i></h1>
+            <p class="lead text-muted">This is a short demo of some feature of Amazon Rekognition.
+              <ul class="" id="div-rekognition-collections">
+
+              </ul>
+            </p>
+            <!--<p>
+              <button id="btn-blue" class="btn btn-primary my-2">Main call to action</button>
+              <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+            </p> -->
+          </div>
+        </section>
+
+        <div class="album py-5 bg-light">
+          <div class="container">
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="card mb-4 box-shadow col-centered" >
+                  <!-- <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap"> -->
+                  <video autoplay id="video-reko"></video>
+                  <img class="d-none img-thumbnail card-img-top" height="600" width="400" src="" id="img-reko">
+                  <canvas class="d-none" id="canvas-reko"></canvas>
+                  <div class="card-body">
+                    <p class="card-text" id="p-reko-text">Click on the Start Demo to launch the demo</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-lg btn-primary" id="btn-start-reko">Start demo</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary d-none" id="btn-show-label">Show rekognition</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary d-none" id="btn-reload">Try again</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-centered">
+                <div class="card mb-4 box-shadow d-none " id="div-star">
+                <!--  <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap"> -->
+                  <img id="img-private-star-photo" height="600" width="400"  src= "" class="img-thumbnail card-img-top" alt="" />
+                  <div class="card-body">
+                    <p class="card-text" id="p-star-name-text"></p>
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card mb-4 box-shadow d-none" id="div-label1">
+                  <div class="card-body">
+                    <p class="card-text"><h5 class="card-title">Here under  are some information about you.</h5></p>
+
+                  </div>
+                  <div class="card-body">
+                    <p class="card-text" id="p-face-details"></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="card mb-4 box-shadow d-none" id="div-label2">
+                  <div class="card-body">
+                    <p class="card-text"><h5 class="card-title">Here under are other information about you.</h5></p>
+
+                  </div>
+                  <div class="card-body">
+                    <p class="card-text" id="p-face-details-next"></p>
+
+                  </div>
+                </div>
+              </div>
+
+
+
+      </main>
+
+      <footer class="text-muted">
+        <div class="container">
+          <p class="float-right">
+            <a href="#">Back to top</a>
+          </p>
+          <p> Amazon Rekongnition Demo is done by the french solution architect team</p>
+
+        </div>
+      </footer>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <!--   <script src="https://getbootstrap.com/assets/js/vendor/holder.min.js"></script> -->
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1090.0.min.js"></script>
+    <script src="script.js">
+
+    </script>
+  </body>
+
+
+
+
+
+
+
+
+</html>
