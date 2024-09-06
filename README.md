@@ -56,13 +56,14 @@ This project is a web-based demo of Amazon Rekognition, showcasing how to recogn
      starlink: "YOUR_S3_BUCKET_URL"
    };
 
-How to Use
+## How to Use
 Open index.html in your browser.
 Click on Start Demo to begin streaming your webcam.
 Rekognition will analyze your face and match it against the celebrity database.
 The demo will display matching results, including similarity percentage and celebrity image.
 Additional information about your facial attributes like gender, age, emotions, etc., will be displayed.
-AWS Configuration
+
+## AWS Configuration
 Ensure that the following AWS services are properly configured:
 
 Amazon Rekognition:
@@ -71,7 +72,7 @@ Amazon S3:
 Store your celebrity images in an accessible S3 bucket.
 Provide the correct bucketName and starlink in the script.js.
 
-License
+## License
 This project is done by the French solution architect team and is meant for demo purposes. It may contain proprietary code for internal use.
 
 
